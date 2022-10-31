@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=06X5CFrCbSinfSDfjySMDUB4a6gNkp3Q"></script>
+ 
+<title>Position</title>
+</head>
+<body>
+<div id="allmap" style="width: 100%;height:500px;"></div>
+ <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+<script src="__CDN__/layer/layer.js"></script>
+<script type="text/javascript">
+	var user_id = {$user.id};
+	var user_name = "{$user.username}";
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(119.49014,35.425478);
+    map.centerAndZoom(point,12);
+ 
+    var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(function(r){console.log(r.point)
+        if(this.getStatus() == BMAP_STATUS_SUCCESS){
+            var mk = new BMap.Marker(r.point);
+            map.addOverlay(mk);//标出所在地
+            map.panTo(r.point);//地图中心移动
+            var point = new BMap.Point(r.point.lng,r.point.lat);
+            var coordinate = "119.472682,35.393488";//设置的签到点
+            var arr = coordinate.split(",");
+            var lon = arr[0];      
+            var lat = arr[1];
+            var pointA = new BMap.Point(lon,lat); 
+            var gc = new BMap.Geocoder();
+            var address = "";
+            gc.getLocation(point, function(rs){
+            	address = rs.address;
+                var province = 0; //获取省份
+                var city = 0; //获取城市
+                var district = 0; //区
+                var street = 0; //街
+                var streetNumber = 0; //街
+                var business = 0; //建筑
+                var addComp = rs.addressComponents;
+                province = addComp.province; //获取省份
+                city = addComp.city; //获取城市
+                district = addComp.district; //区
+                street = addComp.street; //街
+                streetNumber = addComp.streetNumber; //街
+                business = addComp.business; //商业建筑
+                circle = new BMap.Circle(pointA, 3000, {
+	                fillColor: "blue",
+	                strokeWeight: 1,
+	                fillOpacity: 0.2,
+	                strokeOpacity: 0.2
+	            });
+	            map.addOverlay(circle);
+
+	            var distance = map.getDistance(pointA,point).toFixed(2);
+	            if (distance <= 3000) {
+	            	$.post("user_sign",{user_id:user_id,name:user_name},function(res){
+	            		layer.msg(res.msg)
+	            	},'json');
+	            	
+	            } else {
+	            	
+	            	layer.msg("Check in failed, current location:"+address)
+	            }
+            });
+            
+        }else {
+            $("#errormsg").html("Error locating, please try again");
+            $("#errormsg").show();
+            alert('failed'+this.getStatus());
+        }        
+    },{enableHighAccuracy: true})
+</script>
+ 
+ 
+</body>
+</html>

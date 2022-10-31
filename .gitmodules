@@ -1,0 +1,3 @@
+[submodule "data/thinkphp"]
+	path = data/thinkphp
+	url = https://github.com/MilkTeaKiller/Attendance-System-Mobile.git

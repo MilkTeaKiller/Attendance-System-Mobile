@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="__CDN__/static/filestyle.css?v=1">
+<title>Profile</title>
+</head>
+<body>
+
+    <div class="topbox">
+        <p>Profile</p>
+        <span onclick="openNav()">⇦</span>
+        <script type="text/javascript">
+
+            function openNav() {
+                location.href="Dashboard.html";
+            }
+        </script>
+    </div>
+    <p class="person">Personal</p>
+    <p class="name">Name:             {$user.username}</p>
+    <p class="Employee">Employee</p>
+    <p class="Department">Department:      {$user.department}</p>
+    <p class="group">Employee group: {$user.jobposition}</p>
+    <p class="branch">Branch:  xx </p>
+    <p class="date">Join date:     {:date("d M Y")}</p>
+
+</body>
+</html>

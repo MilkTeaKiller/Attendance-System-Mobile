@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)http://demo.mxyhn.xyz:8020/cssthemes5/twts_195_lowin/red.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>打卡系统</title>
+	<link rel="stylesheet" href="__CDN__/static/auth.css">
+<link rel="stylesheet" type="text/css" href="__CDN__/larryms/css/admin/base.css" media="all">
+<link rel="stylesheet" type="text/css" href="__CDN__/larryms/css/admin/admin.css">
+</head>
+<body>
+<div class="adcenter"><script src="__CDN__/static/ggad2_728x90.js"></script></div>
+	<div class="lowin lowin-red">
+		<div class="lowin-brand">
+			<img src="__CDN__/static/kodinger.jpg" alt="logo">
+		</div>
+		<div class="lowin-wrapper" style="min-height: 456px;">
+			<div class="lowin-box lowin-login">
+				<div class="lowin-box-inner">
+					<form action="/">
+						<p>用户登录</p>
+						<div class="lowin-group">
+							<label>邮箱</label>
+							<input type="email" name="email" class="lowin-input" autocomplete="off" id="email">
+						</div>
+						<div class="lowin-group password-group" style="height: 69px;">
+							<label>密码</label>
+							<input type="password" name="password" autocomplete="off" class="lowin-input" id="psd">
+						</div>
+						<a class="lowin-btn login-btn" id="login" style="text-align:center;">登录</a>
+						<div class="text-foot">
+							 没有账号？<a href="reg">注册</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+	<script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+	<script src="__CDN__/static/auth.js"></script>
+	<script src="__CDN__/layer/layer.js"></script>
+	<script>
+		$("#login").click(function(){
+			var email = $("#email").val();
+			var psw = $("#psd").val();
+			if(email == "" || psd == ""){
+				layer.msg("输入的信息不能为空");
+				return false;
+			}
+			$.post("user_login",{email:email,psw:psw},function(res){
+				layer.msg(res.msg);
+				if(res.code == 1){
+					location.href = "dashboard";
+				}
+			},'json');
+		});
+	</script>
+
+</body></html>

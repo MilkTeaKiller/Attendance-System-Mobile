@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<mete charset="utf-8"/>
+<link rel="stylesheet" href="__CDN__/static/mapstyle.css">
+<link rel="stylesheet" href="__CDN__/static/sign/public.css">
+<link rel="stylesheet" href="__CDN__/static/sign/signin.css?v=2021042801">
+<title>Log</title>
+
+</head>
+
+<body>
+    <div class="topbox">
+        <p>Click Log</p>
+        <span  onclick="openNav()">⇦</span>
+        <script type="text/javascript">
+            function openNav() {
+                location.href="dashboard.html";
+            }
+        </script>
+    </div>
+
+<div class="map">
+
+    <div class="maps" style="position:relative;">
+       <div class="Calendar" style="width: 115%">
+            <div id="toyear" class="flex flex-pack-center">
+                <div id="idCalendarPre">&lt;</div>
+                <div class="year-month">
+                    <span id="idCalendarYear">2021</span>年<span id="idCalendarMonth">4</span>月
+                </div>
+                <div id="idCalendarNext">&gt;</div>
+            </div>
+            <table border="1px" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr class="tou">
+                        <td>日</td>
+                        <td>一</td>
+                        <td>二</td>
+                        <td>三</td>
+                        <td>四</td>
+                        <td>五</td>
+                        <td>六</td>
+                    </tr>
+                </thead>
+                <tbody id="idCalendar"><tr><td><span>&nbsp;</span></td><td><span>&nbsp;</span></td><td><span>&nbsp;</span></td><td><span>&nbsp;</span></td><td><span>1</span></td><td><span>2</span></td><td><span>3</span></td></tr><tr><td><span>4</span></td><td><span>5</span></td><td><span>6</span></td><td><span>7</span></td><td><span>8</span></td><td><span>9</span></td><td><span>10</span></td></tr><tr><td><span>11</span></td><td><span>12</span></td><td><span>13</span></td><td><span>14</span></td><td><span>15</span></td><td><span>16</span></td><td><span>17</span></td></tr><tr><td><span>18</span></td><td><span>19</span></td><td><span>20</span></td><td><span>21</span></td><td><span>22</span></td><td><span>23</span></td><td><span>24</span></td></tr><tr><td><span>25</span></td><td><span>26</span></td><td><span>27</span></td><td><span>28</span></td><td><span>29</span></td><td><span>30</span></td><td>&nbsp;</td></tr></tbody>
+            </table>
+        </div>
+        <!-- <button style="width:180px;height:50px;position:absolute;background-color:#083C7A99;;border-radius:20px;color: #FFFFFF;left: 120px;top: 650px;" onclick="getLocation()">Clock in</button> -->
+    </div>
+    <div id="mapholder" style="left: 0px;top: -75px;"></div>
+</div>
+<script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="__CDN__/static/sign/rili.js"></script>
+        <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+        <script language="JavaScript">
+            var isSign = false;
+            var myday = new Array(); 
+            var time = "{$list}";
+            if(time){
+                myday = time.split(',');
+            }
+            console.log(myday);
+            var cale = new Calendar("idCalendar", {
+                qdDay: myday,
+                onToday: function(o) {
+                    o.className = "onToday";
+                },
+                onSignIn: function (){
+                },
+                onFinish: function() {
+                    $$("idCalendarYear").innerHTML = this.Year;
+                    $$("idCalendarMonth").innerHTML = this.Month; 
+
+                }
+            });
+            $$("idCalendarPre").onclick = function() {
+                cale.PreMonth();
+            }
+            $$("idCalendarNext").onclick = function() {
+                cale.NextMonth();
+            }
+        </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="__CDN__/static/style.css">
+<title>Login</title>
+</head>
+<body>
+    <div class="group1">
+        <img src="__CDN__/static/DoerHRM Logo.png"></img>
+        <p>Forget Password</p>
+        <label>Submit your email address and we will email to you a link to reset your password.</label>
+    </div>
+    <div class="group2">
+        <p>Email:</p>
+        <input type="text" id='mail'></input>
+        <p>New Password:</p>
+        <input type="password" id="psd"></input>
+        <p>Code:</p>
+        <input type="text" style="width: 100px" id="code"></input><button id='send_code'>send code</button>
+    </div>
+    <div class="group5" style="top:480px">
+        <button id='submit'>Submit</button>
+    </div>
+    <div class="back" style="top:530px">
+        <a href="#" style="text-align: center;">Back to login</p>
+    </div>
+    <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+    <script src="__CDN__/layer/layer.js"></script>
+    <script type="text/javascript">
+       $("#send_code").click(function(){
+            var mail = $("#mail").val();
+            if(mail == ""){
+                layer.msg("请填写邮件地址");
+                return false;
+            }
+            $.post("send_msg",{mail:mail},function(res){
+                layer.msg(res.msg);
+            },"json");
+       });
+       $("#submit").click(function(){
+            var mail = $("#mail").val();
+            var psd = $("#psd").val();
+            var code = $("#code").val();
+            $.post("user_forget",{email:mail,psd:psd,code:code},function(res){
+                layer.msg(res.msg);
+                if(res.code == 1){
+                    location.href = "login"; 
+                }
+            },"json");
+       });
+    </script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+html
+{
+background-color: white;
+}
+body
+{
+position: relative;
+width: 414px;
+height: 896px;
+
+background: #FFFFFF;
+border-width: 2px;
+border-style: solid;
+border-color: black;
+}
+.group1
+{
+	position: absolute;
+	width: 414px;
+	height: 136px;
+	left: 0px;
+	top: 40px;
+}
+
+.group1 p
+{
+	position: absolute;
+	width: 225px;
+	height: 1px;
+	left: 94px;
+	top: 100px;
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 19px;
+
+	display: flex;
+	align-items: center;
+	text-align: center;
+
+	color: #000000;
+
+}
+.group1 label
+{
+position: absolute;
+width: 324px;
+height: 48px;
+left: 45px;
+top: 123px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 300;
+font-size: 12px;
+line-height: 14px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #000000;
+
+}
+.group2 
+{
+	position: absolute;
+	width: 344px;
+	height: 65px;
+	left: 100px;
+	top: 220px;
+}
+.group3
+{	
+position: absolute;
+width: 344px;
+height: 66px;
+left: 100px;
+top: 297px;
+}
+.group4
+{
+position: absolute;
+width: 232px;
+height: 52px;
+left: 130px;
+top: 426px;
+
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.group5
+{
+position: absolute;
+width: 232px;
+height: 52px;
+left: 145px;
+top: 350px;
+
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+}
+.forget
+{
+position: absolute;
+width: 137px;
+height: 20px;
+left: 100px;
+top: 510px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+
+color: #000000;
+}
+
+.back
+{
+position: absolute;
+width: 137px;
+height: 20px;
+left: 105px;
+top: 400px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+
+color: #000000;
+}

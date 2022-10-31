@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="__CDN__/static/style.css">
+<title>Login</title>
+</head>
+<body>
+    <div class="group1">
+        <img src="__CDN__/static/DoerHRM Logo.png"></img>
+        <p>Login to you account</p>
+    </div>
+    <div class="group2">
+        <p>Email:</p>
+        <input type="text" id="email"></input>
+    </div>
+    <div class="group3">
+        <p>Password:</p>
+        <input type="text" id="pass"></input>
+    </div>
+    <div class="group4">
+        <button onclick="log()">Log in</button>
+    </div>
+    <div class="forget">
+        <a href="forget.html">forget password?</a>
+    </div>
+<script type="text/javascript">
+    function log()
+    {
+        var emailaddress = document.getElementById("email").value;
+        var password = document.getElementById("pass").value;
+
+        if(password === "jf123"&&emailaddress === "jimjiao980805@gmail.com")
+        {
+            location.href = "Dashboard.html";
+        }
+        else if(password !== "jf123" && emailaddress !== "jimjiao980805@gmail.com")
+        {
+            alert("Wrong email address or password, please check")
+        }
+        else if(password.value == null ||  emailaddress.value == null)
+        {
+            alert("please enter the email and password")
+        }
+    }
+</script>
+</body>
+</html>

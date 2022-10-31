@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+<link rel="stylesheet" href="C:/Users/jimji/Desktop/321/style2.css">
+<title>Dashboard</title>
+</head>
+<body>
+    <div class="topbox" > 
+        <a href="notification.html">
+            <img src="Notification.png" style="width: 40px;height: 40px;left:350px;top:16px"></img>
+        </a>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <div class="picture">
+                <img src="user.png"style="position: absolute;width:150px;height: 150px;left: 30px;top: 80px;"></img>
+            </div>
+            <p style="width: 147px;height: 25px;left: 40px;top: 210px;">Jiao Fengming</p>
+            <p style="width: 147px;height: 25px;left: 40px;top: 240px;">jim@gmail.com</p>
+            <a href="profile.html" class="profile">Profile</a>
+            <a href="Login.html" class="out">Sign out</a>
+            <script type="text/javascript">
+                  function closeNav() {
+                    document.getElementById("mySidenav").style.width = "0";
+                    document.body.style.backgroundColor = "white";
+                }
+            </script>
+        </div>
+        <div id="main">
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">☰</span>
+                    <script type="text/javascript">
+                        function openNav() {
+                            document.getElementById("mySidenav").style.width = "270px";
+                            document.getElementById("mySidenav").style.height = "896px";
+                            document.body.style.backgroundColor = "rgba(246,177,0,1)";
+                        }
+                    </script>
+        </div>
+        <img src="DoerHRM Logo1.png"></img>
+        <label>Company Name</label>
+        <p> Dear, Ms.Jiao Welcome! </p>
+        <div class="datatime" id="dateTime" >
+            <script>
+                Date.prototype.format = function (fmt) 
+                    {
+                        var o = {
+                        "y+": this.getFullYear, 
+                        "M+": this.getMonth() + 1, 
+                        "d+": this.getDate(), 
+                        "h+": this.getHours(), 
+                        "m+": this.getMinutes(), 
+                        "s+": this.getSeconds() 
+                    };
+                    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+                    for (var k in o)
+                        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                        return fmt;
+                    }
+                setInterval("document.getElementById('dateTime').innerHTML = (new Date()).format('yyyy-MM-dd hh:mm:ss');", 1000);
+            </script>
+        </div>
+    </div>
+    <div class="punch" >
+            <button style="width:100px;height:50px;background-color:#083C7A99;border-radius:15px;color: #FFFFFF;" onclick="punch()">punch in</button>
+    </div>
+    <div class="group1">
+        <img src="set.png"></img>
+        <p>Setting</p>
+    </div>
+    <div class="group2">
+        <img src="attendance.png"></img>
+        <p>My Attendance</p>
+    </div>
+     <div class="group3">
+        <img src="map.png"></img>
+        <p>My Map</p>
+    </div>
+    <script type="text/javascript">
+        function punch()
+        {
+            location.href = "GPS.html";
+        }
+    </script>
+
+</body>
+</html>
